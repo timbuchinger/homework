@@ -23,24 +23,22 @@ jobs:
       - name: Log in to GHCR
         uses: docker/login-action@v2
         with:
-          registry: ghcr.io
-          username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PAT }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          registry: ghcr.io
-          username: "${{ secrets.USERNAME }}"
-          password: ${{ secrets.PAT }}
-          repository: ${{ secrets.USERNAME }}/homework
+          # registry: ghcr.io
+          username: "${{ secrets.DOCKERHUB_USERNAME }}"
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           context: app/
           file: app/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ secrets.USERNAME }}/homework:${{ github.run_id }}
-            ghcr.io/${{ secrets.USERNAME }}/homework:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/homework:${{ github.run_id }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/homework:latest
 
       - name: Create K8S Kind Cluster
         uses: helm/kind-action@v1.4.0
@@ -55,7 +53,7 @@ jobs:
             --create-namespace \
             --set mysql.auth.rootPassword=${{ secrets.MYSQL_PASSWORD }} \
             --set tag=${{ github.run_id }} \
-            --set image=ghcr.io/${{ secrets.USERNAME }}/homework \
+            --set image=${{ secrets.DOCKERHUB_USERNAME }}/homework \
             --wait
           kubeconfig: '${{ secrets.KUBECONFIG }}'
 
