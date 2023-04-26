@@ -60,6 +60,8 @@ jobs:
 
       - name: Create database
         run: |
+          kubectl get service
+          kubectl get pods
           kubectl port-forward svc/homework-mysql 3306:3306 &
           mysql -u root -p"${{ secrets.MYSQL_PASSWORD }}" -h 127.0.0.1 homework < sql/users.sql
 
