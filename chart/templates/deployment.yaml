@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+  labels:
+    app: python
+spec:
+  selector:
+    matchLabels:
+      app: python
+  template:
+    metadata:
+      labels:
+        app: python
+    spec:
+      containers:
+      - name: python
+        image: '{{ .Values.image }}:{{ .Values.tag }}'
+        ports:
+        - containerPort: 8000
+        env:
+        - name: db_root_password
+          value: '{{ .Values.mysql.auth.rootPassword }}'
+        - name: db_name
+          value: '{{ .Values.mysql.auth.database }}'
+        - name: MYSQL_SERVICE_HOST
+          value: '{{ .Values.mysql.auth.host }}'
+        - name: MYSQL_SERVICE_PORT
+          value: '3306'
