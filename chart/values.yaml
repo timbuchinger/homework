@@ -4,3 +4,8 @@ mysql:
     createDatabase: true
     database: "homework"
     host: "homework-mysql"
+  # primary:
+  #   service:
+  #     type: NodePort
+  #     nodePorts:
+  #       mysql: 30036

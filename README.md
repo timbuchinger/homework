@@ -10,3 +10,8 @@ To run the deployment, follow these steps:
     * `PAT`=[GitHub PAT with read and write package permission]
     * `MYSQL_PASSWORD`=[MySQL root password]
 3. The CD workflow is triggered by a commit to main, or you can start it manually through the workflow_dispatch trigger.
+
+## Run Locally
+
+1. Clone the repo locally.
+2. Setup a Kind cluster locally: `kind create cluster`
