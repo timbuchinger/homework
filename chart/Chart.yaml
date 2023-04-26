@@ -1,0 +1,9 @@
+apiVersion: v2
+name: homework
+version: 0.0.1
+Appversion: 0.0.1
+description: This Chart deploys homework.
+dependencies:
+- name: mysql
+  version: 9.7.2
+  repository: https://charts.bitnami.com/bitnami

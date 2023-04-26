@@ -1,0 +1,6 @@
+---
+mysql:
+  auth:
+    createDatabase: true
+    database: "homework"
+    host: "homework-mysql"
