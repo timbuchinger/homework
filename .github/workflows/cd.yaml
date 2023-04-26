@@ -78,4 +78,3 @@ jobs:
           curl -X GET http://localhost:8000/users
           curl -X GET http://localhost:8000/delete/1
           curl -X GET http://localhost:8000/users
-          curl -X PUT
