@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 *.tgz
-/Chart.lock
+*Chart.lock
