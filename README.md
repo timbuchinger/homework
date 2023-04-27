@@ -1,6 +1,6 @@
 # Homework
 
-## Run Workflow
+## Run GitHub sWorkflow
 
 To run the deployment, follow these steps:
 
